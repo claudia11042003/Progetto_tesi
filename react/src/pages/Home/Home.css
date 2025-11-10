@@ -1,0 +1,163 @@
+/* area centrale con gli accordion */
+.content-main{
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  padding: 12px 16px 80px;
+  transition: margin-right .3s ease;
+}
+.content-main.with-chat{ margin-right: 360px; } /* lascia respiro quando la chat è aperta */
+
+.csv-fab{
+  position: fixed;
+  bottom: 80px; right: 24px;
+  background-color: #361b4f9e;
+    border-color: #001d3d;
+  color: #ffffff;
+  border: 0; border-radius: 25px;
+  width: 150px; height: 40px;
+  font-size: 1.1rem; font-weight: 700;
+  cursor: pointer;
+    box-shadow: 0 0 15px 4px rgba(187, 146, 187, 0.5);
+  transition: transform .2s ease, box-shadow .2s ease;
+  z-index: 60;
+  font-size:medium;
+}
+/* FAB pulsante chat */
+.chat-fab{
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background-color: #361b4f9e;
+    border-color: #001d3d;
+  color: #ffffff;
+  border: 0; border-radius: 25px;
+  width: 150px; height: 40px;
+  font-size: 1.1rem; font-weight: 700;
+  cursor: pointer;
+    box-shadow: 0 0 15px 4px rgba(187, 146, 187, 0.5);
+  transition: transform .2s ease, box-shadow .2s ease;
+  z-index: 60;
+  font-size:medium;
+  
+}
+.chat-fab:hover {
+  transform: scale(1.08);
+  /* glow più forte in hover */
+  box-shadow: 0 0 50px 5px rgba(204, 138, 211, 0.7);
+}
+.chat-fab:disabled{
+  background-color: rgb(83, 82, 82);
+}
+/* pannello laterale slide-in */
+.chat-panel{
+  position: fixed;
+  top: 0; right: -360px;            /* nascosto */
+  width: min(92vw, 360px);
+  height: 100vh;
+  background: rgba(255,255,255,0.9); /* semi-trasparente */
+  backdrop-filter: blur(6px);
+  box-shadow: -4px 0 16px rgba(0,0,0,.25);
+  display: flex; flex-direction: column;
+  transition: right .3s ease;
+  z-index: 70;
+  overflow: hidden;
+}
+
+/* WATERMARK "FORMA TEAM" */
+.chat-panel::before{
+
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: clamp(28px, 6vw, 84px);
+  color: rgba(40,40,70,0.12);         /* tenue */
+  pointer-events: none;               /* non cliccabile */
+  z-index: 0;                         /* dietro ai contenuti */
+}
+
+.chat-panel.open{ right: 0; }
+
+.panel-header{
+  position: relative; z-index: 1;
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 10px 14px;
+  background: #041C2D;
+  color: #ffffff;
+  border-bottom: 1px solid #000000;
+}
+.panel-close{
+  background: transparent; border: 0; font-size: 18px; cursor: pointer;
+  color:white;
+}
+
+.panel-content{
+  position: relative; z-index: 1;
+  flex: 1; overflow-y: auto;
+  padding: 10px 14px;
+  background: linear-gradient(270deg,#2e0d39,#240730,#0b1322,#022031 );
+     animation: animazione-sfondo 5s ease infinite;
+  }
+  @keyframes animazione-sfondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+  
+
+.panel-footer{
+  position: relative; z-index: 1;
+  display: flex; gap: 10px;
+  padding: 10px 14px;
+  background: #041C2D;
+  border-top: 1px solid #000000;
+}
+
+/* riuso i tuoi input/bottoni */
+.inputchatbar{ 
+  flex: 1; 
+  border-radius: 25px;
+  background-color: #E9E1E1;
+  
+}
+
+.inputchatbar::placeholder{
+  color: #40325b;
+  text-align: center;
+}
+.sendbottom{
+   padding: 0 14px; 
+   height: 36px; 
+   border-radius: 25px;
+   background-color: #8062bc;
+   color:white;
+ }
+
+/* mobile: la chat scivola dal basso e occupa 75% della vh */
+@media (max-width: 900px){
+  .content-main.with-chat{ margin-right: 0; }
+  .chat-panel{
+    width: 100%;
+    height: 75vh;
+    right: 0; bottom: -75vh; top: auto;
+    border-top-left-radius: 16px; border-top-right-radius: 16px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,.25);
+    transition: bottom .3s ease;
+  }
+  .chat-panel.open{ bottom: 0; }
+}
+
+
+.titoloHR{
+color: #e6e6ee;
+text-align: center;
+}

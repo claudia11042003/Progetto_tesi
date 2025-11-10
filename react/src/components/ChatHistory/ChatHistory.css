@@ -1,0 +1,82 @@
+/* contenitore scrollabile della cronologia */
+.chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 530px;
+  overflow: auto;
+   scroll-behavior: smooth;
+  padding: 12px;
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none;
+  
+}
+
+
+
+/* riga messaggio (avatar + bolla) */
+.msg {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.msg.user { justify-content: flex-end; } /* utente a destra */
+
+/* avatar tondo */
+.avatar {
+  width: 28px; height: 28px; flex: 0 0 28px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: none; color: #ffffff; font-size: 14px;
+}
+
+.avatarhr{
+  color:white;
+}
+.avataruser { background: none; 
+color:white}
+
+/* bolla del messaggio */
+.bubble {
+  position: relative;
+  max-width: 74%;
+  padding: 10px 34px 10px 12px;  /* spazio a destra per il bottone copia */
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  line-height: 1.35;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* preserva \n */
+   overflow-y: auto;        /* Abilita lo scroll verticale */
+  flex-grow: 1;
+}
+
+/* colori/angoli diversi: utente vs bot */
+.msg.user .bubble {
+ background-color:#9760d688;
+ color:white;
+  border-radius: 16px 16px 4px 16px; /* “codina” verso sinistra */
+}
+.msg.bot .bubble {
+ background-color:#9760d688;
+ color:white;
+  
+  
+  border-radius: 16px 16px 16px 4px; /* “codina” verso destra */
+}
+
+/* pulsante copia dentro la bolla */
+.copy {
+  position: absolute;
+  right: 6px; top: 6px;
+  border: none; background: transparent;
+  cursor: pointer; opacity: .6;
+  font-size: 12px; padding: 2px 4px;
+}
+.copy:hover { opacity: 1; }
+
+/* (opz.) se usi markdown: stile per blocchi di codice */
+.bubble pre {
+  background: rgba(0,0,0,.06);
+  padding: 8px; border-radius: 8px; overflow: auto;
+}
+.bubble code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }

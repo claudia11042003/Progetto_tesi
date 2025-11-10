@@ -1,0 +1,26 @@
+
+.cand-acc { border-radius:12px; background:#e9e1e1; box-shadow:0 2px 6px rgba(0,0,0,.06); }
+.cand-acc + .cand-acc { margin-top:16px; }
+
+.cand-acc__header{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  padding:12px 14px; border:0; background:none; cursor:pointer;
+  font-size:18px; font-weight:700;
+  border-bottom:1px solid #e9ecef;  /* riga pulita */
+}
+.cand-acc__chev{ transition: transform .25s ease; }
+.cand-acc__chev.is-open{ transform: rotate(180deg); }
+
+/* Accordion “a griglia”: niente max-height */
+.cand-acc__panel{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .28s ease;
+}
+.cand-acc__panel.is-open{ grid-template-rows: 1fr; }
+
+/* wrapper che nasconde overflow e gestisce padding -> evita i “collapsing margins” */
+.cand-acc__inner{
+  overflow: hidden;
+ 
+}

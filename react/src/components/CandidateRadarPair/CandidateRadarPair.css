@@ -1,0 +1,90 @@
+/* Contenitore verticale */
+.cand-flex{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  width:100%;
+    background-color: #370c60d1;
+    border-color: #001d3d;
+}
+
+.cand-title{ margin: 0 0 2px 0; font-size: 20px; font-weight: 700; }
+
+/* RIGA DEI DUE RADAR – LARGHEZZA 60% DELLA PAGINA, CENTRATA */
+.radars-row{
+  display:flex;
+  margin-left: 10px;
+  gap:16px;
+  width:98%;
+
+
+}
+
+/* Ogni radar occupa metà della riga 60% */
+.radar-card{
+  flex:1 1 0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+
+   margin-top: 5px;
+    margin-bottom: 5px;
+
+
+}
+
+.radar-sub{ margin:0;
+     font-size:15px;
+      font-weight:600; 
+    text-align: center;}
+
+/* Box del grafico: adattamento al contenitore */
+.chart-box{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;          /* quadrato responsivo */
+  overflow:hidden;
+}
+
+/* Padding interno per non tagliare etichette */
+.chart-inner{
+  position:absolute;
+  inset:94px 2px 51px 19px;
+}
+
+; /* top right bottom left */
+
+.chart-inner > *{ width:100% !important; height:100% !important; }
+
+/* Se lo schermo è piccolo, porta la riga al 100% e metti i radar in colonna */
+@media (max-width: 900px){
+  .radars-row{ width:100%; flex-direction:column; }
+}
+
+/* RISULTATI SOTTO */
+/* Variante A: larghezza piena (tutta pagina) */
+.results-wide{
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* --- Se preferisci che anche i risultati stiano al 60%, usa invece:
+.results-wide{ width:60%; margin-inline:auto; ...stili identici... }
+*/
+
+.results-text{
+margin: 6px 0 0 0;
+    line-height: 1.43;
+    white-space: break-spaces;
+    font-size: 15px;
+}
